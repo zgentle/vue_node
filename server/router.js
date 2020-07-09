@@ -14,4 +14,8 @@ router.post('/deleteValue', (req, res, next) => {
   api.deleteValue(req, res, next);
 });
 
+router.post('/setValueByMongodb', (req, res, next) => {
+  api.setValueByMongodb(req, res, next);
+});
+
 module.exports = router;

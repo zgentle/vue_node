@@ -11,6 +11,18 @@ const pool = mysql.createPool({
   multipleStatements: true    // 多语句查询
 });
 
+const mongoclient = require("mongodb").MongoClient;
+const url = "mongodb://140.143.100.150:27017/runoob";
+const pool2 = mongoclient.connect(url, function (err, client) {
+  client.db("").admin().listDatabases().then(function (data) {
+      data.databases.forEach(function (value, index, arr) {
+          console.log(value.name);
+      })
+  }, function (err) {
+      console.log(err.message);
+  })
+});
+
 module.exports = {
   getValue(req, res, next) {
     var id = req.query.id;
@@ -42,5 +54,19 @@ module.exports = {
           connection.release();
       })
     })
+  },
+  setValueByMongodb(req, res, next) {
+    console.log(req.body);
+    var flag = req.body.flag, time = req.body.time, current = req.body.current;
+    mongoclient.connect(url, { useNewUrlParser: true }, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("mrz");
+      var myobj = { flag: flag,current: current, time: time };
+      dbo.collection("peipei").insertOne(myobj, function(err, result) {
+          if (err) throw err;
+          res.json(result);
+          db.close();
+      });
+    });
   },
 }

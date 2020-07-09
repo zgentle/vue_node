@@ -19,7 +19,7 @@
     <el-dialog
       :visible.sync="dialogVisible"
       center
-      width="30%">
+      width="80%">
       <span>{{infotext}}</span>
       <span slot="footer" class="dialog-footer">
         <el-button v-if="current !== 5" type="primary" @click="dialogVisible = false;setValue(1)">愿 意</el-button>

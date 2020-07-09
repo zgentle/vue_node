@@ -38,8 +38,15 @@
          url('./font/myfont.ttf') format('truetype'),
          url('./font/myfont.svg') format('svg');
 }
+@font-face{
+     font-family: 'myfont2'; 
+     src: url('./font/myfont2.eot');
+     src:url('./font/myfont2.woff') format('woff'),
+         url('./font/myfont2.ttf') format('truetype'),
+         url('./font/myfont2.svg') format('svg');
+}
 
 body {
-	font-family: "myfont";
+	font-family: myfont2,myfont;
 }
 </style>

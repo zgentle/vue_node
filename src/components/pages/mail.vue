@@ -39,6 +39,9 @@ export default {
       current: 1
     }
   },
+  mounted() {
+    this.setValue('打开')
+  },
   methods: {
     opendialog() {
       this.dialogVisible = true

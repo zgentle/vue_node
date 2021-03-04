@@ -2,6 +2,7 @@ const mysql = require('mysql');
 const dbConfig = require('./db');
 const sqlMap = require('./sqlMap');
 
+// mysql
 const pool = mysql.createPool({
   host: dbConfig.mysql.host,
   user: dbConfig.mysql.user,
@@ -11,17 +12,18 @@ const pool = mysql.createPool({
   multipleStatements: true    // 多语句查询
 });
 
+// mongodb
 const mongoclient = require("mongodb").MongoClient;
 const url = "mongodb://140.143.100.150:27017/runoob";
-const pool2 = mongoclient.connect(url, function (err, client) {
-  client.db("").admin().listDatabases().then(function (data) {
-      data.databases.forEach(function (value, index, arr) {
-          console.log(value.name);
-      })
-  }, function (err) {
-      console.log(err.message);
-  })
-});
+// const pool2 = mongoclient.connect(url, function (err, client) {
+//   client.db("").admin().listDatabases().then(function (data) {
+//       data.databases.forEach(function (value, index, arr) {
+//           console.log(value.name);
+//       })
+//   }, function (err) {
+//       console.log(err.message);
+//   })
+// });
 
 module.exports = {
   getValue(req, res, next) {

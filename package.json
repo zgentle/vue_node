@@ -13,7 +13,7 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "element-ui": "^2.5.2",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "font-spider": "file:font-spider",
     "mongodb": "^3.5.9",
     "mysql": "^2.16.0",
